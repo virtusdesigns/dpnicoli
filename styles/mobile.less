@@ -30,7 +30,7 @@
     .header--nav-borders .nav-open .main-nav .nav-wrapper {
       border-width: 1px 0 0;
       border-style: solid;
-      .border-color-nav (@navBgColor);
+      .border-color-mobilenav (@mobilenavBgColor);
     }
     #mobileMenu {
       visibility: hidden;
@@ -300,10 +300,10 @@
     z-index: 1;
     padding-bottom: 48px;
     overflow: scroll;
-    background-color: @navBgColor;
+    background-color: @mobilenavBgColor;
     border-style: solid;
     border-width: 0 0 1px 0;
-    .border-color-nav (@navBgColor);
+    .border-color-mobilenav (@mobilenavBgColor);
     opacity: 0;
     -webkit-transition: opacity 0.2s 0.5s linear;
     -moz-transition: opacity 0.2s 0.5s linear;
@@ -348,7 +348,7 @@
     -moz-transition: all 0.3s ease;
     transition: all 0.3s ease;
     position: relative;
-    .border-color-nav (@navBgColor);
+    .border-color-mobilenav (@mobilenavBgColor);
     z-index: 3;
   }
 
@@ -379,7 +379,7 @@
       > ul {
         border-style: solid;
         border-width: 0 0 1px 0;
-        .border-color-nav (@navBgColor);
+        .border-color-mobilenav (@mobilenavBgColor);
       }
     }
     #mobile-header {
@@ -393,7 +393,7 @@
       transform: translate3d(82%, 0, 0);
       border-style: solid;
       border-width: 0 0 0 1px;
-      .border-color-nav (@navBgColor);
+      .border-color-mobilenav (@mobilenavBgColor);
       position: fixed;
     }
     #footer, .footer-nav {
@@ -462,7 +462,7 @@
         width: 100%;
         border-style: solid;
         border-width: 0 0 1px;
-        .border-color-nav (@navBgColor);
+        .border-color-mobilenav (@mobilenavBgColor);
         &:last-child {
           border-bottom-width: 0;
         }
@@ -561,7 +561,7 @@
           width: 100%;
           border-style: solid;
           border-width: 0 0 1px;
-          .border-color-nav (@navBgColor);
+          .border-color-mobilenav (@mobilenavBgColor);
           &:last-child {
             border-bottom-width: 0;
           }
