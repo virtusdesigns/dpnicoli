@@ -1,0 +1,178 @@
+{.section item}
+
+<div id="productWrapper" class="product {@|item-classes}" data-item-id="{id}">
+
+  <div id="productNav"><a href="{collection.fullUrl}"><span class="back-arrow">&larr;</span> Back to {collection.title}</a></div>
+
+  <div id="productSummary" class="clear">
+
+    <h1 class="product-title mobile" data-content-field="title">{title}</h1>
+
+    <div id="productGallery">
+      <div class="intrinsic"><div class="wrapper">
+      <div id="productSlideshow">
+        {.repeated section items}
+          {.image?}
+            <div class="slide"><img data-load="false" {@|image-meta} /><div class=""></div></div>
+          {.end}
+          {.video?}
+            {@|video}
+          {.end}
+        {.end}
+      </div>
+      </div></div>
+      <div id="productThumbnails">
+        {.repeated section items}<div class="slide content-fill"><img {@|image-meta} /></div>{.end}
+      </div>
+    </div>
+
+
+    <div id="productDetails">
+      <!-- {@|product-status} -->
+
+      <h1 class="product-title" data-content-field="title">{title}</h1>
+
+      <!-- {@|product-price} -->
+
+      {.excerpt?}<div class="product-excerpt" data-content-field="excerpt">{excerpt}</div>{.end}
+
+      <!-- {@|product-checkout} -->
+
+      <div class="product-sharing">{@|social-button-inline}</div>
+    </div>
+  </div>
+
+    {.section body}
+      <div class="product-description">
+        
+        
+    <div id="tabs">
+	<ul>
+		<li><a href="#product-description">FULL PRODUCT DESCRIPTION</a></li>
+		<li><a href="#product-specifications">PRODUCT SPECIFICATION</a></li>
+		<li><a href="#tab-data">TAB DATA</a></li>
+	</ul>
+	<div id="product-description">
+  		<squarespace:block-field id="productdescriptionBlock" columns="1" label="Product Description" />
+  	</div>
+	<div id="product-specifications">
+      <squarespace:block-field id="productspecificationBlock" columns="1" label="Product Specifications" />
+  	</div>
+	<div id="tab-data">
+    	<squarespace:block-field id="tabdataBlock" columns="1" label="Tab Data" />
+  	</div>
+</div>
+        
+        
+      </div>
+    {.end}
+    
+    
+
+    
+    
+    
+    <script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+  </script>
+
+</div>
+
+{.end}
+
+
+
+
+
+<script type="text/javascript">
+Y.use('squarespace-image-loader', 'squarespace-gallery-stacked', 'squarespace-gallery-ng', 'squarespace-util', function(Y) {
+  Y.on('domready', function() {
+
+    /////////////////
+    // Product Images
+
+    // don't display thumbnail strip if only one 
+    if (Y.all('#productSlideshow .slide').size() == 1 ) {
+      Y.one('#productThumbnails').remove();
+    } else {
+      var productThumbnailsEl = Y.one('#productThumbnails');
+
+      if (productThumbnailsEl) {
+        productThumbnailsEl.setStyle('visibility', 'visible');
+      }
+    }
+
+    if (Y.one('#productWrapper') && Y.all('#productSlideshow .slide').size() >= 1 ) {
+
+      var galleryAutoCrop = 'fill';
+
+      if(Y.Squarespace.Template.getTweakValue('product-gallery-auto-crop') == "false") {
+        galleryAutoCrop = 'fit'
+      }
+
+      // full slideshow
+      var productSlideshow = new Y.Squarespace.Gallery2({
+        container: Y.one('#productSlideshow'),
+        elements: {
+          next: '.next-slide',
+          previous: '.prev-slide',
+          controls: '#productThumbnails'
+        },
+        loop: true,
+        design: 'stacked',
+        designOptions: {
+          autoHeight: false,
+          clickBehavior: false
+        },
+        loaderOptions: {
+          mode: galleryAutoCrop
+        }
+      });
+
+      var lightboxImages = Y.all('#productSlideshow .slide img');
+
+      var lightboxSet = [];
+
+      lightboxImages.each(function(image) {
+        lightboxSet.push({
+          content: image
+        });
+      });
+
+      // only show controls for size > 1
+      var hasControls = Y.all('#productSlideshow .slide').size() > 1;
+
+      Y.one('body').delegate('click', function(e) {
+        var lightbox = new Y.Squarespace.Lightbox2({
+          controls: {
+            previous: hasControls,
+            next: hasControls,
+          },
+          set: lightboxSet,
+          currentSetIndex: lightboxImages.indexOf(e.target)
+        });
+
+        lightbox.render();
+      }, '#productSlideshow .slide img', this);
+
+      // refresh slides on resize
+      Y.one('window').on('resize', function(e){
+        Y.all('.slide img').each(function(img) {
+         img.fire('refresh');
+        });
+      });
+
+    } else {
+
+      var slideImg = Y.one('#productSlideshow .slide img');
+
+      if (slideImg) {
+        ImageLoader.load(slideImg, { load: true });
+      }
+    }
+
+  });
+});
+</script>
