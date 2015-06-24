@@ -1,0 +1,8 @@
+<div class="column column--inline column--4of12 careers__col column--tablet-medium-2of4 column--tablet-small-3of4 column--mobile-full">
+        <h2 class="h2 margin-bot--40 careers__title">
+            <a href="{fullUrl}" class="careers__link js-career js-career-{title|slugify}">
+                {title}
+            </a>
+        </h2>
+        <div class="careers__excerpt type--light-grey column--tablet-small-full column--mobile-full">{excerpt}</div>
+    </div>
