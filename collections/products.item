@@ -53,13 +53,13 @@
 		<li><a href="#tab-data">TAB DATA</a></li>
 	</ul>
 	<div id="product-description">
-  		<squarespace:block-field id="productdescriptionBlock" columns="1" label="Product Description" />
+  		<squarespace:block-field id="productdescriptionBlock-{collection.id}" columns="12" label="Product Description" />
   	</div>
 	<div id="product-specifications">
-      <squarespace:block-field id="productspecificationBlock" columns="1" label="Product Specifications" />
+      <squarespace:block-field id="productspecificationBlock-{collection.id}" columns="12" label="Product Specifications" />
   	</div>
 	<div id="tab-data">
-    	<squarespace:block-field id="tabdataBlock" columns="1" label="Tab Data" />
+    	<squarespace:block-field id="tabdataBlock-{collection.id}" columns="12" label="Tab Data" />
   	</div>
 </div>
         
