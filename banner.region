@@ -1,0 +1,4 @@
+ <div class="footer-image-wrapper" data-collection-id="{collection.id}" data-edit-main-image="Banner" data-annotation-alignment="bottom left">
+	<div class="footer-image-content"><squarespace:block-field id="footerimageBlock" columns="1" label="Footer Image Content" /></div>
+	<div class="footer-image content-fill" data-collection-id="{id}" data-content-field="main-image"><img {@|image-meta} /></div>
+</div>

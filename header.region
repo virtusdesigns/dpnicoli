@@ -65,7 +65,7 @@
           <a class="icon-menu" id="mobileMenu"></a><!-- comment the space between elements because science
           -->{.section website}<div class="site-title-wrapper">
             <h1 data-content-field="site-title" class="site-title">
-              <a href="/" class="home-link">{siteTitle}</a>
+              <a href="/" class="home-link"><img src="{logoImageUrl}?format=1500w" alt="{siteTitle}" class="logo" /></a>
             </h1>
           </div>{.end}<!-- comment the space between elements because science
           --><div class="info-email-wrapper">
@@ -91,7 +91,7 @@
                 <h1 data-content-field="site-title" class="site-title">
                     {.section logoImageUrl}
                      <div class="logo-wrapper"><a href="/" class="home-link"><img src="{logoImageUrl}?format=1500w" alt="{siteTitle}" class="logo" /></a></div>
-                     <div class="logo-image-title"><a href="/" class="home-link">{siteTitle}</a></div>
+                     <div class="logo-image-title"><a href="/" class="home-link"><img src="{logoImageUrl}?format=1500w" alt="{siteTitle}" class="logo" /></a></div>
                     {.or}
                       <a href="/" class="home-link">{siteTitle}</a>
                     {.end}
@@ -112,99 +112,3 @@
 
           </nav>
         </header>
-
-        <!--CONTENT INJECTION POINT-->
-
-        <section id="content">
-          {.if item}
-            {.section item}
-              {.main-image?}
-                <div class="main-image-wrapper">
-                  <div class="main-image content-fill" data-item-id="{id}" data-content-field="main-image"><img {@|image-meta} /></div>
-                </div>
-              {.end}
-            {.end}
-          {.or}
-            {.section collection}
-              {.equal? typeName "album"}
-              {.or}
-                {.main-image?}
-                  {.section mainImage}
-                  <div class="main-image-wrapper" data-collection-id="{collection.id}" data-edit-main-image="Banner" data-annotation-alignment="bottom left">
-                  	<div class="main-image-content"><squarespace:block-field id="headeriamgeBlock" columns="1" label="Page Header Image Content" /></div>
-                    <div class="main-image content-fill" data-collection-id="{id}" data-content-field="main-image"><img {@|image-meta} /></div>
-                  </div>
-                  {.end}
-                {.end}
-              {.end}
-            {.end}
-          {.end}
-        <squarespace:folder-navigation template="foldernav" />
-
-        {.section collection}{.equal? typeName "products"}{.section categories}
-        <div id="categoryNav">
-          <input type="checkbox" name="category-nav-toggle" id="categoryNavToggle" class="category-nav-toggle hidden" />
-          <label for="categoryNavToggle" class="category-nav-toggle-label" onclick></label>
-          <nav class="category-nav">
-            <ul class="category-nav-links">
-              <li class="filter"><a>Filter{.if categoryFilter}: {categoryFilter}{.end}</a></li>
-              <li{.if categoryFilter}{.or} class="active-link all"{.end}><a href="{fullUrl}">All</a></li>
-            {.repeated section @}
-              <li{.equal? categoryFilter @} class="active-link"{.end}><a href="{fullUrl}?category={@|url-encode}">{@}</a></li>
-            {.end}
-            </ul>
-          </nav>
-        </div>
-        {.end}{.end}{.end}
-
-        <div class="content-inner-wrapper">
-          {.section collection}{.equal? typeName "album"}
-              {.or}{.if description || title}<div class="collection-title-desc" data-collection-id="{id}" {.equal? collection.typeName "gallery"}{.or}{.equal? collection.typeName "album"}{.or}data-edit-main-image="Banner"{.end}{.end}>
-            <div class="collection-title-basic"><h1 class="page-title">{title}</h1></div>
-            {.if description}<div class="collection-desc">{description}</div>{.end}{.end}
-          </div>{.end}{.end}
-            <div class="main-content-wrapper" data-content-field="main-content" data-collection-id="{collection.id}" {.equal? collection.typeName "gallery"}{.or}{.equal? collection.typeName "album"}{.or}data-edit-main-image="Banner"{.end}{.end}>
-              {squarespace.main-content}
-            </div>
-        </div>
-        </section>
-      </div> <!-- end .wrapper -->
-
-      <squarespace:navigation navigationId="footerNav" template="footernav" />
-
-      <footer id="footer" class="cf">
-        <squarespace:block-field id="footerBlockLeft" columns="1" label="Left Footer Content" />
-        <squarespace:block-field id="footerBlockRight" columns="1" label="Right Footer Content" />
-      </footer>
-    </div> <!-- end .outer-wrapper -->
-
-    <!--INJECTION POINT FOR TRACKING SCRIPTS AND USER CONTENT FROM THE CODE INJECTION TAB-->
-
-    {squarespace-footers}
-
-{.if template.mobileStylesEnabled}{.or}
-  <script>
-    Y.use('node', function() {
-      Y.on('domready', function() {
-        var move;
-        Y.all('.folder-child a').each(function(a) {
-          a.on('touchstart', function() {
-            move = false;
-          });
-          a.on('touchmove', function() {
-            move = true;
-          });
-          a.on('touchend', function() {
-            if (move === false) {
-              window.location = a.getAttribute('href');
-            }
-          });
-        });
-      });
-    });
-  </script>
-{.end}
-    
-  </body>
-
-</html> 

@@ -1,0 +1,38 @@
+      <squarespace:navigation navigationId="footerNav" template="footernav" />
+
+      <footer id="footer" class="cf">
+        <squarespace:block-field id="footerBlockLeft" columns="1" label="Left Footer Content" />
+        <squarespace:block-field id="footerBlockRight" columns="1" label="Right Footer Content" />
+      </footer>
+    </div> <!-- end .outer-wrapper -->
+
+    <!--INJECTION POINT FOR TRACKING SCRIPTS AND USER CONTENT FROM THE CODE INJECTION TAB-->
+
+    {squarespace-footers}
+
+{.if template.mobileStylesEnabled}{.or}
+  <script>
+    Y.use('node', function() {
+      Y.on('domready', function() {
+        var move;
+        Y.all('.folder-child a').each(function(a) {
+          a.on('touchstart', function() {
+            move = false;
+          });
+          a.on('touchmove', function() {
+            move = true;
+          });
+          a.on('touchend', function() {
+            if (move === false) {
+              window.location = a.getAttribute('href');
+            }
+          });
+        });
+      });
+    });
+  </script>
+{.end}
+    
+  </body>
+
+</html> 
