@@ -90,7 +90,7 @@
               <div class="site-title-wrapper">
                 <h1 data-content-field="site-title" class="site-title">
                     {.section logoImageUrl}
-                     <div class="logo-wrapper"><a href="/" class="home-link"><img src="{logoImageUrl}?format=1500w" alt="{siteTitle}" class="logo" /></a></div>
+                     <div class="logo-wrapper"><a href="/" class="home-link"><img src="{logoImageUrl}?format=1500w" alt="{siteTitle}" class="logo" /></a><span class="header-phone">1 (800) 695 5006</span></div>
                      <div class="logo-image-title"><a href="/" class="home-link"><img src="{logoImageUrl}?format=1500w" alt="{siteTitle}" class="logo" /></a></div>
                     {.or}
                       <a href="/" class="home-link">{siteTitle}</a>
@@ -105,6 +105,10 @@
               </div>
               <div id="headerSearch">
                 <a class="icon-search" href="/search" data-source="template"><span class="icon-text">Search</span></a>
+              </div>
+              <div id="headerLinks">
+					<a href="/quote-request-form/" class="get-quote sqs-block-button-element--small sqs-block-button-element">GET A QUOTE</a>
+					<a href="/products/" class="catalog sqs-block-button-element--small sqs-block-button-element">CATALOG</a>
               </div>
             </div>
 

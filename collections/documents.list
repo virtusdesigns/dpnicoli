@@ -1,0 +1,75 @@
+{.if categoryFilter}
+
+	<div id="productList" class="clear {categoryFilter}">
+	  {.repeated section items}
+	    <div class="product">
+
+	            <h2 class="title">{title}</h2>
+
+				{body}
+
+	    </div>
+	    {.end}
+	  
+	</div>
+
+{.or}
+
+	<div id="productList" class="clear">
+
+	
+	<!--<h2>Shoring</h2>-->
+	
+	<squarespace:query collection="documents" limit="20" category="Shoring"> 
+	    {.repeated section items}
+	    <div class="product">
+
+	            <h2 class="title">{title}</h2>
+
+				{body}
+
+	    </div>
+	    {.end}
+	</squarespace:query>
+	
+	<!-- end Shoring -->
+
+	
+	<!--<h2>Slide Rail</h2>-->
+	
+	<squarespace:query collection="documents" limit="20" category="Slide Rail"> 
+	    {.repeated section items}
+	    <div class="product">
+
+	            <h2 class="title">{title}</h2>
+
+				{body}
+
+	    </div>
+	    {.end}
+	</squarespace:query>
+	
+	<!-- end Slide Rail -->
+
+	
+	<!--<h2>Steel Plates</h2>-->
+	
+	<squarespace:query collection="documents" limit="20" category="Steel Plate"> 
+	    {.repeated section items}
+	    <div class="product">
+
+	            <h2 class="title">{title}</h2>
+
+				{body}
+
+	    </div>
+	    {.end}
+	</squarespace:query>
+	
+	<!-- end Slide Rail -->
+
+	
+	   
+	</div><!-- end #productList -->
+
+{.end}

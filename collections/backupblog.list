@@ -1,14 +1,30 @@
+<!-- CATEGORY FILTER RESULTS ex: http://base-template.squarespace.com/blog/?category=category1 -->
 
-{.section item}
+{.section categoryFilter}
+  <p class="filter">Filtering by Category: {@|safe}</p>
+{.end}
+
+<!-- TAG FILTER RESULTS ex: http://base-template.squarespace.com/blog/?tag=tag2 -->
+
+{.section tagFilter}
+  <p class="filter">Filtering by Tag: {@|safe}</p>
+{.end}
+
+<!-- AUTHOR FILTER RESULTS ex: http://www.base-template.com/blog?author=4f046df4d09ae2cf23d1aaa2 -->
+
+{.if authorFilter}
+  <p class="filter">Filtering by Author: {author.displayName}</p>
+{.end}
+
+<!--ITEM LOOP-->
 
 <div class="post-wrapper">
 <!--WRAPPER-->
 
-<div class="sqs-layout sqs-grid-12 columns-12" data-layout-label="Tab Data" data-type="block-field">
-
 <div class="col sqs-col-8 span-8">
 
-<section class="body single-post">  
+<section class="body">
+  {.repeated section items}
   <article id="post-{id}" class="{@|item-classes}" data-item-id="{id}">
     
     <!--POST TILE-->
@@ -21,23 +37,16 @@
       {.end}
     </h1>
 
-    <h2 class="date-author">
-    
-    
-    {.if categories} 
-          <!--CATEGORIES-->
-          {.if categories}
-            {.repeated section categories}
-              <a class="category" href="{collection.fullUrl}?category={@|url-encode}">{@}</a>{.alternates with},
-            {.end}
-          {.end}
-      {.end}
-
-<time datetime="{addedOn|date %F}">{addedOn|date %B %e, %Y}</time><a href="{collection.fullUrl}?author={author.id}" class="author">{author.displayName}</a></h2>
+    <h2 class="date-author"><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time><a href="{collection.fullUrl}?author={author.id}" class="author">{author.displayName}</a></h2>
 
     <!--MAIN CONTENT-->
 
-    {body}
+    {.if excerpt}
+      {excerpt}
+      <a class="link" href="{fullUrl}">Read More</a>
+    {.or}
+      {body}
+    {.end}
 
     <!--BLOG INJECTION-->
 
@@ -66,8 +75,15 @@
         {.if websiteSettings.simpleLikingEnabled}<a class="like" title="Like this">{@|like-button}</a>{.end}
         {@|social-button-inline}
       </div>
-      {.if tags} 
+      {.if categories || tags} 
         <div class="tags-cats">
+          <!--CATEGORIES-->
+          {.if categories}
+            <em>categories</em> {.repeated section categories}
+              <a class="category" href="{collection.fullUrl}?category={@|url-encode}">{@}</a>{.alternates with},
+            {.end}
+            <br />
+          {.end}
           {.if tags}
             <!--TAGS-->
             <em>tags</em> {.repeated section tags}
@@ -79,57 +95,37 @@
     </div>
 
   </article>
+  {.end}
 </section>
 
-{.end}
+<!--PAGINATION-->
+  
+{.if pagination}
+  <nav class="pagination">
 
-{.section pagination}
-  <div class="pagination">
-    {.section prevItem}
-    <div class="left">
-      <span class="prev"><a href="{fullUrl}">&larr;</a></span>
-      <span class="prev-title"><a href="{fullUrl}"><strong>{addedOn|date %B %d, %Y}</strong><br>{title}</a></span>
-    </div>
+    <!--OLDER PAGE-->
+
+    {.if pagination.prevPage}
+      <span class="prev"><a href="{pagination.prevPageUrl}" class="older">&larr;</a></span>
     {.or}
-    <div class="left none">
-      <span class="prev">&larr;</span>
-    </div>
+      <span class="disabled prev">&larr;</span>
     {.end}
-    {.section nextItem}
-    <div class="right">
-      <span class="next"><a href="{fullUrl}">&rarr;</a></span>
-      <span class="next-title"><a href="{fullUrl}"><strong>{addedOn|date %B %d, %Y}</strong><br>{title}</a></span>
-    </div>
+
+    <!--NEWER PAGE-->
+
+    {.if pagination.nextPage}
+      <span class="next"><a href="{pagination.nextPageUrl}" class="newer">&rarr;</a></span>
     {.or}
-    <div class="right none">
-      <span class="next">&rarr;</span>
-    </div>
+      <span class="disabled next">&rarr;</span>
     {.end}
-  </div>
+
+  </nav>
 {.end}
-
-
-{.section item}
-  <!-- COMMENTS -->
-  {.comments?}
-  <div id="commentsWrapper">
-  <section id="comments-{id}" class="comments-wrapper">
-    {@|comments}
-  </section>
-  </div>
-  {.end}
-{.end}
-
 
 </div>
 
-<div id="sidebar-right" class="col sqs-col-3 span-3 single-post">
+<div class="col sqs-col-4 span-4">
 	<squarespace:block-field id="sidebarBlock" columns="1" label="Sidebar Right" />
 </div>
 
 </div>
-
-</div> <!-- /.post-wrapper -->
-
-
-

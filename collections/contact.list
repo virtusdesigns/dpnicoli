@@ -1,0 +1,181 @@
+<!-- CATEGORY FILTER RESULTS ex: http://base-template.squarespace.com/blog/?category=category1 -->
+
+{.section categoryFilter}
+  <p class="filter">Filtering by Category: {@|safe}</p>
+{.end}
+
+<!-- TAG FILTER RESULTS ex: http://base-template.squarespace.com/blog/?tag=tag2 -->
+
+{.section tagFilter}
+  <p class="filter">Filtering by Tag: {@|safe}</p>
+{.end}
+
+<!-- AUTHOR FILTER RESULTS ex: http://www.base-template.com/blog?author=4f046df4d09ae2cf23d1aaa2 -->
+
+{.if authorFilter}
+  <p class="filter">Filtering by Author: {author.displayName}</p>
+{.end}
+
+<!--ITEM LOOP-->
+
+<div class="post-wrapper">
+<!--WRAPPER-->
+
+<div class="sqs-layout sqs-grid-12 columns-12" data-layout-label="Tab Data" data-type="block-field">
+
+<div class="row sqs-row">
+
+<squarespace:block-field id="contactupperBlock" columns="12" label="Contact Top Content" />
+
+<section class="body">
+
+<squarespace:query collection="contact" limit="10" tag="Washington">
+
+  {.repeated section items}
+  
+  <div class="col sqs-col-4 span-4">
+  
+  <div class="sqs-block code-block sqs-block-code">
+  
+  <article id="post-{id}" class="{@|item-classes} post-list" data-item-id="{id}">
+    
+    <div class="bio-card">
+	    <div class="bio-card-upper">
+	    {.main-image?} 
+	    	<div class="post-thumbnail-image"><img {@|image-meta} ></div>
+	    {.end}
+	    	<div class="bio-card-info">{body}</div>
+	    
+	    </div>
+		
+		<div class="bio-card-middle">
+			<h1 class="bio-title">{title}</h1>
+			<a class="bio-contact" href="#">CONTACT</a>
+		</div>
+		
+		<div class="bio-card-lower">
+			{excerpt}
+ 		</div>
+	</div>
+		
+		    <!--BLOG INJECTION-->
+		
+		    {postItemInjectCode}     
+
+	</article>
+	
+	</div>
+	
+	</div>
+	{.end}
+
+</squarespace:query>	
+
+
+<squarespace:block-field id="WashingtonBlock" columns="12" label="Washington Content" />
+
+<!--END WASHINGTON-->
+
+<squarespace:query collection="contact" limit="10" tag="Oregon">
+
+  {.repeated section items}
+  
+  <div class="col sqs-col-4 span-4">
+  
+  <div class="sqs-block code-block sqs-block-code">
+  
+  <article id="post-{id}" class="{@|item-classes} post-list" data-item-id="{id}">
+    
+    <div class="bio-card">
+	    <div class="bio-card-upper">
+	    {.main-image?} 
+	    	<div class="post-thumbnail-image"><img {@|image-meta} ></div>
+	    {.end}
+	    	<div class="bio-card-info">{body}</div>
+	    
+	    </div>
+		
+		<div class="bio-card-middle">
+			<h1 class="bio-title">{title}</h1>
+			<a class="bio-contact" href="#">CONTACT</a>
+		</div>
+		
+		<div class="bio-card-lower">
+			{excerpt}
+ 		</div>
+	</div>
+		
+		    <!--BLOG INJECTION-->
+		
+		    {postItemInjectCode}     
+
+	</article>
+	
+	</div>
+	
+	</div>
+	{.end}
+
+</squarespace:query>	
+
+
+
+<squarespace:block-field id="OregonBlock" columns="12" label="Oregon Content" />
+
+<!--END OREGON-->
+
+<squarespace:query collection="contact" limit="10" tag="California">
+
+  {.repeated section items}
+  
+  <div class="col sqs-col-4 span-4">
+  
+  <div class="sqs-block code-block sqs-block-code">
+  
+  <article id="post-{id}" class="{@|item-classes} post-list" data-item-id="{id}">
+    
+    <div class="bio-card">
+	    <div class="bio-card-upper">
+	    {.main-image?} 
+	    	<div class="post-thumbnail-image"><img {@|image-meta} ></div>
+	    {.end}
+	    	<div class="bio-card-info">{body}</div>
+	    
+	    </div>
+		
+		<div class="bio-card-middle">
+			<h1 class="bio-title">{title}</h1>
+			<a class="bio-contact" href="#">CONTACT</a>
+		</div>
+		
+		<div class="bio-card-lower">
+			{excerpt}
+ 		</div>
+	</div>
+		
+		    <!--BLOG INJECTION-->
+		
+		    {postItemInjectCode}     
+
+	</article>
+	
+	</div>
+	
+	</div>
+	{.end}
+
+</squarespace:query>	
+
+
+<squarespace:block-field id="CaliforniaBlock" columns="12" label="California Content" />
+
+<!--END CALIFIRNIA-->
+
+</section>
+
+
+</div>
+
+</div>
+
+</div>

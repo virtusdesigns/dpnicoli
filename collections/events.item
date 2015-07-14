@@ -1,0 +1,74 @@
+
+{.section item}
+
+<div class="post-wrapper">
+<!--WRAPPER-->
+
+<div class="sqs-layout sqs-grid-12 columns-12" data-layout-label="Tab Data" data-type="block-field">
+
+<div class="col sqs-col-8 span-8">
+
+<section class="body single-event">  
+  <article class="eventitem">
+    
+    <!--POST TILE-->
+
+    <h1 class="title">{title} </h1>
+    
+    	<div class="eventlist-datetag">
+            <div class="eventlist-datetag-inner">
+              <div class="eventlist-datetag-startdate eventlist-datetag-startdate--month">{startDate|date %b}</div>
+              <div class="eventlist-datetag-startdate eventlist-datetag-startdate--day">{startDate|date %e}</div>
+            </div>
+        </div>
+    
+    			<p class="date">
+					<time class="event-meta-heading eventlist-meta-date">{startDate|date %B %e, %Y}{.same-day?}{.or}{.if endDate} &ndash; {endDate|date %B %e, %Y}{.end}{.end}</time>
+					<span class="eventlist-meta-time">
+						<time class="event-time-12hr">{startDate|date %l:%M%P}{.same-day?}{.if endDate} &ndash; {endDate|date %l:%M%P}{.end}{.end}</time>
+						<time class="event-time-24hr">{startDate|date %H:%M}{.same-day?}{.if endDate} &ndash; {endDate|date %H:%M}{.end}{.end}</time>
+					</span>
+				</p>
+
+				<!-- Location -->
+				<p class="location eventlist-meta-address">
+					{.section location}
+					{.if addressTitle}
+					<strong>{addressTitle}</strong> <a href="http://maps.google.com?q={addressLine1} {addressLine2} {addressCountry}" target="_blank">(map)</a>
+					{.end}
+					{.end}
+				</p>
+
+
+		  
+		  {excerpt}
+
+
+
+    <!--MAIN CONTENT-->
+
+    
+    {body}
+
+
+
+    
+
+  </article>
+</section>
+
+{.end}
+
+
+</div>
+
+<div id="sidebar-right" class="col sqs-col-3 span-3">
+	<squarespace:block-field id="eventsidebarBlock" columns="1" label="Event Sidebar Right" />
+</div>
+
+</div>
+
+</div> <!-- /.post-wrapper -->
+
+
+

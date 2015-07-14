@@ -18,105 +18,93 @@
 
 <!--ITEM LOOP-->
 
-  <div class="post-wrapper">
+<div class="post-wrapper">
 <!--WRAPPER-->
+
+<h1 class="industry-news">Industry News</h1>
+
+<div class="sqs-layout sqs-grid-12 columns-12" data-layout-label="Tab Data" data-type="block-field">
+
+<div class="col sqs-col-8 span-8">
+
 <section class="body">
   {.repeated section items}
-  <article id="post-{id}" class="{@|item-classes}" data-item-id="{id}">
+  <article id="post-{id}" class="{@|item-classes} post-list" data-item-id="{id}">
     
-    <!--POST TILE-->
-
-    <h1 class="title">
-      {.passthrough?}
-        <a href="{sourceUrl}" target="_blank">{title}</a>
-      {.or}
-        <a href="{fullUrl}">{title}</a>
-      {.end}
-    </h1>
-
-    <h2 class="date-author"><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time><a href="{collection.fullUrl}?author={author.id}" class="author">{author.displayName}</a></h2>
-
-    <!--MAIN CONTENT-->
-
-    {.if excerpt}
-      {excerpt}
-      <a class="link" href="{fullUrl}">Read More</a>
-    {.or}
-      {body}
-    {.end}
-
-    <!--BLOG INJECTION-->
-
-    {postItemInjectCode}    
-
-    <!--CATEGORIES-->
-
-    <div class="post-meta">
-
-      <!--COMMENTS, SHARE, LIKE-->
-      <div class="comment-share-like">
-        {.passthrough?}{.or}{.section sourceUrl}<a href="{sourceUrl}" class="source" target="_blank" title="Source">Source</a>{.end}{.end}
-        {.comments?}
-          {.if websiteSettings.disqusShortname}
-          {@|comment-link}
-          {.or}
-          {.section publicCommentCount}
-          <a class="comments" href="{fullUrl}#commentsWrapper" title="Comments">
-            {@} Comment{@|pluralize}
-          </a>
-            {.or}
-              <a class="comments" href="{fullUrl}#commentsWrapper" title="Comments">Comment</a>
-            {.end}
-          {.end}
-        {.end}
-        {.if websiteSettings.simpleLikingEnabled}<a class="like" title="Like this">{@|like-button}</a>{.end}
-        {@|social-button-inline}
-      </div>
-      {.if categories || tags} 
-        <div class="tags-cats">
-          <!--CATEGORIES-->
-          {.if categories}
-            <em>categories</em> {.repeated section categories}
-              <a class="category" href="{collection.fullUrl}?category={@|url-encode}">{@}</a>{.alternates with},
-            {.end}
-            <br />
-          {.end}
-          {.if tags}
-            <!--TAGS-->
-            <em>tags</em> {.repeated section tags}
-              <a class="tag" href="{collection.fullUrl}?tag={@|url-encode}">{@}</a>{.alternates with},
-            {.end}
-          {.end}
-        </div>
-      {.end}
+    {.main-image?} 
+    <div class="col sqs-col-4 span-4">
+    	<div class="post-thumbnail-image"><img {@|image-meta} ></div>
     </div>
-
-  </article>
-  {.end}
+    {.end}
+    
+    <div class="col sqs-col-4 span-4">
+    
+	    <div class="post-list-content">
+	    
+		    <!--POST TILE-->
+		
+		    <h1 class="title">
+		      {.passthrough?}
+		        <a href="{sourceUrl}" target="_blank">{title}</a>
+		      {.or}
+		        <a href="{fullUrl}">{title}</a>
+		      {.end}
+		    </h1>
+		
+		    <h2 class="date-author"><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time><a href="{collection.fullUrl}?author={author.id}" class="author">{author.displayName}</a></h2>
+		
+		    <!--MAIN CONTENT-->
+		
+		    {.if excerpt}
+		      {excerpt}
+		      <a class="link" href="{fullUrl}">Read More</a>
+		    {.or}
+		      {body}
+		    {.end}
+		
+		    <!--BLOG INJECTION-->
+		
+		    {postItemInjectCode}     
+		    
+	    </div>
+		    
+	  </div>
+		
+	</article>
+	{.end}
 </section>
+		
+		<!--PAGINATION-->
+		  
+		{.if pagination}
+		  <nav class="pagination">
+		
+		    <!--OLDER PAGE-->
+		
+		    {.if pagination.prevPage}
+		      <span class="prev"><a href="{pagination.prevPageUrl}" class="older">&larr; Older</a></span>
+		    {.or}
+		      <span class="disabled prev">&larr; Older</span>
+		    {.end}
+		
+		    <!--NEWER PAGE-->
+		
+		    {.if pagination.nextPage}
+		      <span class="next"><a href="{pagination.nextPageUrl}" class="newer">Newer &rarr;</a></span>
+		    {.or}
+		      <span class="disabled next">Newer &rarr;</span>
+		    {.end}
+		
+		  </nav>
+		{.end}
 
-<!--PAGINATION-->
-  
-{.if pagination}
-  <nav class="pagination">
 
-    <!--OLDER PAGE-->
+</div>
 
-    {.if pagination.prevPage}
-      <span class="prev"><a href="{pagination.prevPageUrl}" class="older">&larr;</a></span>
-    {.or}
-      <span class="disabled prev">&larr;</span>
-    {.end}
+<div id="sidebar-right" class="col sqs-col-3 span-3">
+	<squarespace:block-field id="sidebarBlock" columns="1" label="Sidebar Right" />
+</div>
 
-    <!--NEWER PAGE-->
-
-    {.if pagination.nextPage}
-      <span class="next"><a href="{pagination.nextPageUrl}" class="newer">&rarr;</a></span>
-    {.or}
-      <span class="disabled next">&rarr;</span>
-    {.end}
-
-  </nav>
-{.end}
+</div>
 
 </div>

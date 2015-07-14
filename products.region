@@ -1,31 +1,49 @@
         <!--CONTENT INJECTION POINT-->
 
         <section id="content">
-        
-        <squarespace:folder-navigation template="foldernav" />
 
+        <div class="content-inner-wrapper">
+        
         {.section collection}{.equal? typeName "products"}{.section categories}
-        <div id="categoryNav">
+        <div id="categoryNav" class="single-category">
+        
+        {.if categoryFilter}
+        
+         <div id="productNav"><a href="{collection.fullUrl}"><span class="back-arrow">&larr;</span> Back to {collection.title}</a></div>
+        
+        <h1>{categoryFilter}</h1>
+        
+        <div class="product-upper">
+        	<squarespace:block-field id="productBlockUpper-Filter{.if categoryFilter}-{categoryFilter}{.end}" columns="12" label="Product Top Content" />
+        </div>
+        
+        {.or}
+        
+        <h1>PRODUCTS</h1>
+        
+        
+        <div class="product-upper">
+        	<squarespace:block-field id="productBlockUpper-Filter{.if categoryFilter}-{categoryFilter}{.end}" columns="12" label="Product Top Content" />
+        </div>
+        
+        
           <input type="checkbox" name="category-nav-toggle" id="categoryNavToggle" class="category-nav-toggle hidden" />
           <label for="categoryNavToggle" class="category-nav-toggle-label" onclick></label>
           <nav class="category-nav">
             <ul class="category-nav-links">
-              <li class="filter"><a>Filter{.if categoryFilter}: {categoryFilter}{.end}</a></li>
-              <li{.if categoryFilter}{.or} class="active-link all"{.end}><a href="{fullUrl}">All</a></li>
+             <!-- <li class="filter"><a>Filter{.if categoryFilter}: {categoryFilter}{.end}</a></li>
+              <li{.if categoryFilter}{.or} class="active-link all"{.end}><a href="{fullUrl}">All</a></li>-->
             {.repeated section @}
               <li{.equal? categoryFilter @} class="active-link"{.end}><a href="{fullUrl}?category={@|url-encode}">{@}</a></li>
             {.end}
             </ul>
           </nav>
+          
+          {.end}
         </div>
         {.end}{.end}{.end}
+        
 
-        <div class="content-inner-wrapper">
-          {.section collection}{.equal? typeName "album"}
-              {.or}{.if description || title}<div class="collection-title-desc" data-collection-id="{id}" {.equal? collection.typeName "gallery"}{.or}{.equal? collection.typeName "album"}{.or}data-edit-main-image="Banner"{.end}{.end}>
-            <!-- <div class="collection-title-basic"><h1 class="page-title">{title}</h1></div> -->
-            {.if description}<div class="collection-desc">{description}</div>{.end}{.end}
-          </div>{.end}{.end}
             <div class="main-content-wrapper" data-content-field="main-content" data-collection-id="{collection.id}" {.equal? collection.typeName "gallery"}{.or}{.equal? collection.typeName "album"}{.or}data-edit-main-image="Banner"{.end}{.end}>
               {squarespace.main-content}
             </div>

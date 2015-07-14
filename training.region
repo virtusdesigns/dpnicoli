@@ -1,0 +1,16 @@
+        <!--CONTENT INJECTION POINT-->
+
+        <section id="content">
+
+        <div class="content-inner-wrapper">
+        
+        <squarespace:block-field id="trainingBlock" columns="12" label="Top Training Content" />
+
+            <div class="main-content-wrapper" data-content-field="main-content" data-collection-id="{collection.id}">
+              {squarespace.main-content}
+            </div>
+        </div>
+        </section>
+        
+        
+      </div> <!-- end .wrapper -->

@@ -1,0 +1,34 @@
+        <!--CONTENT INJECTION POINT-->
+
+        <section id="content" class="documentList">
+
+        <div class="content-inner-wrapper">
+        
+        {.section collection}{.equal? typeName "documents"}{.section categories}
+        <div id="folderNav" class="single-category">
+
+        <h1>Documents</h1>
+        
+
+          <nav class="folder-nav">
+            <ul>
+             <!-- <li class="filter"><a>Filter{.if categoryFilter}: {categoryFilter}{.end}</a></li>-->
+              <li{.if categoryFilter} class="all"{.or} class="active-link all"{.end}><a href="{fullUrl}">All</a></li>
+            {.repeated section @}
+              <li{.equal? categoryFilter @} class="active-link"{.end}><a href="{fullUrl}?category={@|url-encode}">{@}</a></li>
+            {.end}
+            </ul>
+          </nav>
+
+        </div>
+        {.end}{.end}{.end}
+        
+
+            <div class="main-content-wrapper" data-content-field="main-content" data-collection-id="{collection.id}" {.equal? collection.typeName "gallery"}{.or}{.equal? collection.typeName "album"}{.or}data-edit-main-image="Banner"{.end}{.end}>
+              {squarespace.main-content}
+            </div>
+        </div>
+        </section>
+        
+        
+      </div> <!-- end .wrapper -->

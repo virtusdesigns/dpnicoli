@@ -1,0 +1,173 @@
+{.if categoryFilter}
+
+	<div id="productList" class="clear {categoryFilter}">
+	  {.repeated section items}
+	    <a href="{fullUrl}" class="product">
+	      <div>
+	        <!-- Display product image -->
+	          {.main-image?}
+	        <div class="product-image">
+	          <div class="intrinsic">
+	            <div style="overflow: hidden;">
+	              
+	                <img {@|image-meta} />
+	              
+	            </div>
+	          </div>
+	        </div>
+	        {.end}
+	
+	        <!-- product information, like price and title -->
+	        <div class="product-overlay">
+	          <div class="product-meta">
+	          {.section title}
+	            <div class="product-title">{@}</div>
+	          {.end}
+	            <div class="product-price">{@|product-price}</div>
+	          </div>
+	        </div>
+	
+	        <!-- this will place the 'SOLD OUT' or 'SALE' flag on the product appropriately -->
+	        {@|product-status}
+	
+	      </div>
+	    </a>
+	  {.end}
+	  
+	  <a href="/products/?category=Shoring" class="product view-collection shoring">VIEW<br>SHORING<br>PRODUCTS</a>
+	  <a href="/products/?category=Slide+Rail" class="product view-collection slide-rail">VIEW<br>SLIDE RAIL<br>PRODUCTS</a>
+	  <a href="/products/?category=Steel+Plates" class="product view-collection steel-plates">VIEW<br>STEEL PLATES<br>PRODUCTS</a>
+	  
+	</div>
+
+{.or}
+
+	<div id="productList" class="clear">
+	
+	<div class="category-section">
+	
+	<h2>Shoring</h2>
+	
+	<squarespace:query collection="products" limit="20" category="Shoring"> 
+	    {.repeated section items}
+	    <a href="{fullUrl}" class="product">
+	      <div>
+	
+	        {.main-image?}
+	        <div class="product-image">
+	          <div class="intrinsic">
+	            <div style="overflow: hidden;">
+	              
+	                <img {@|image-meta} />
+	              
+	            </div>
+	          </div>
+	        </div>
+	        {.end}
+	
+	        <div class="product-overlay">
+	          <div class="product-meta">
+	          {.section title}
+	            <div class="product-title">{@}</div>
+	          {.end}
+	            <div class="product-price">{@|product-price}</div>
+	          </div>
+	        </div>
+	
+	        {@|product-status}
+	
+	      </div>
+	    </a>
+	    {.end}
+	</squarespace:query>
+	
+	<!-- end Shoring -->
+	
+	</div>
+	
+	<div class="category-section">
+	
+	<h2>Slide Rail</h2>
+	
+	<squarespace:query collection="products" limit="20" category="Slide Rail"> 
+	    {.repeated section items}
+	    <a href="{fullUrl}" class="product">
+	      <div>
+	
+	        {.main-image?}
+	        <div class="product-image">
+	          <div class="intrinsic">
+	            <div style="overflow: hidden;">
+	              
+	                <img {@|image-meta} />
+	              
+	            </div>
+	          </div>
+	        </div>
+	        {.end}
+	
+	        <div class="product-overlay">
+	          <div class="product-meta">
+	          {.section title}
+	            <div class="product-title">{@}</div>
+	          {.end}
+	            <div class="product-price">{@|product-price}</div>
+	          </div>
+	        </div>
+	
+	        {@|product-status}
+	
+	      </div>
+	    </a>
+	    {.end}
+	</squarespace:query>
+	
+	<!-- end Slide Rail -->
+	
+	</div>
+	
+	<div class="category-section">
+	
+	<h2>Steel Plates</h2>
+	
+	<squarespace:query collection="products" limit="20" category="Steel Plates"> 
+	    {.repeated section items}
+	    <a href="{fullUrl}" class="product">
+	      <div>
+	
+	        {.main-image?}
+	        <div class="product-image">
+	          <div class="intrinsic">
+	            <div style="overflow: hidden;">
+	              
+	                <img {@|image-meta} />
+	              
+	            </div>
+	          </div>
+	        </div>
+	        {.end}
+	
+	        <div class="product-overlay">
+	          <div class="product-meta">
+	          {.section title}
+	            <div class="product-title">{@}</div>
+	          {.end}
+	            <div class="product-price">{@|product-price}</div>
+	          </div>
+	        </div>
+	
+	        {@|product-status}
+	
+	      </div>
+	    </a>
+	    {.end}
+	</squarespace:query>
+	
+	<!-- end Slide Rail -->
+	
+	</div>
+	
+	   
+	</div><!-- end #productList -->
+
+{.end}

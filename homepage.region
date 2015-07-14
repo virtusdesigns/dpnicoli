@@ -16,7 +16,6 @@
                 {.main-image?}
                   {.section mainImage}
                   <div class="main-image-wrapper" data-collection-id="{collection.id}" data-edit-main-image="Banner" data-annotation-alignment="bottom left">
-                  	<div class="main-image-content"><div id="headerimageBlock"><squarespace:block-field id="page-header-{collection.id}" columns="1" label="Header Image Content" /></div></div>
                     <div class="main-image content-fill" data-collection-id="{id}" data-content-field="main-image"><img {@|image-meta} /></div>
                   </div>
                   {.end}
@@ -24,32 +23,11 @@
               {.end}
             {.end}
           {.end}
-          
-        <squarespace:folder-navigation template="foldernav" />
-        
-        
-    
 
-        {.section collection}{.equal? typeName "products"}{.section categories}
-        <div id="categoryNav">
-          <input type="checkbox" name="category-nav-toggle" id="categoryNavToggle" class="category-nav-toggle hidden" />
-          <label for="categoryNavToggle" class="category-nav-toggle-label" onclick></label>
-          <nav class="category-nav">
-            <ul class="category-nav-links">
-              <li class="filter"><a>Filter{.if categoryFilter}: {categoryFilter}{.end}</a></li>
-              <li{.if categoryFilter}{.or} class="active-link all"{.end}><a href="{fullUrl}">All</a></li>
-            {.repeated section @}
-              <li{.equal? categoryFilter @} class="active-link"{.end}><a href="{fullUrl}?category={@|url-encode}">{@}</a></li>
-            {.end}
-            </ul>
-          </nav>
-        </div>
-        {.end}{.end}{.end}
 
+<div class="main-image-content"><div id="headerimageBlock"><squarespace:block-field id="page-header-{collection.id}" columns="1" label="Header Image Content" /></div></div>
         
-        
-        
-        <div class="content-inner-wrapper">
+        <div class="content-inner-wrapper home">
           {.section collection}{.equal? typeName "album"}
               {.or}{.if description || title}<div class="collection-title-desc" data-collection-id="{id}" {.equal? collection.typeName "gallery"}{.or}{.equal? collection.typeName "album"}{.or}data-edit-main-image="Banner"{.end}{.end}>
             <div class="collection-title-basic"><h1 class="page-title">{title}</h1></div>
@@ -62,8 +40,9 @@
         
                
           <div class="footer-image-wrapper" data-collection-id="{collection.id}" data-edit-main-image="Banner" data-annotation-alignment="bottom left">
-                  	<div class="footer-image-content"><squarespace:block-field id="footerimageBlock" columns="1" label="Page Footer Image Content" /></div>
-                    <div class="footer-image content-fill" data-collection-id="{id}" data-content-field="main-image"><img {@|image-meta} /></div>
+                  	<div id="ad-block">
+					<div class="footer-image-content"><squarespace:block-field id="footerimageBlock" columns="1" label="Footer Image Content" /></div>
+					</div>
                   </div>
                   
                   

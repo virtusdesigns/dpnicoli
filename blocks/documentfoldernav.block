@@ -1,5 +1,7 @@
 <div id="folderNav" data-content-field="navigation-foldernav">
 
+<h1>DOCUMENTS</h1>
+
   <nav class="folder-nav">
     <ul>
     {.repeated section items}

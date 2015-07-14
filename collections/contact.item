@@ -8,7 +8,7 @@
 
 <div class="col sqs-col-8 span-8">
 
-<section class="body single-post">  
+<section class="body">  
   <article id="post-{id}" class="{@|item-classes}" data-item-id="{id}">
     
     <!--POST TILE-->
@@ -21,23 +21,14 @@
       {.end}
     </h1>
 
-    <h2 class="date-author">
-    
-    
-    {.if categories} 
-          <!--CATEGORIES-->
-          {.if categories}
-            {.repeated section categories}
-              <a class="category" href="{collection.fullUrl}?category={@|url-encode}">{@}</a>{.alternates with},
-            {.end}
-          {.end}
-      {.end}
-
-<time datetime="{addedOn|date %F}">{addedOn|date %B %e, %Y}</time><a href="{collection.fullUrl}?author={author.id}" class="author">{author.displayName}</a></h2>
+    <h2 class="date-author"><time datetime="{addedOn|date %F}">{addedOn|date %B %e, %Y}</time><a href="{collection.fullUrl}?author={author.id}" class="author">{author.displayName}</a></h2>
 
     <!--MAIN CONTENT-->
 
     {body}
+    
+    {item.customContent.position}
+    {item.customContent.directnumber}
 
     <!--BLOG INJECTION-->
 
@@ -66,8 +57,15 @@
         {.if websiteSettings.simpleLikingEnabled}<a class="like" title="Like this">{@|like-button}</a>{.end}
         {@|social-button-inline}
       </div>
-      {.if tags} 
+      {.if categories || tags} 
         <div class="tags-cats">
+          <!--CATEGORIES-->
+          {.if categories}
+            <em>categories</em> {.repeated section categories}
+              <a class="category" href="{collection.fullUrl}?category={@|url-encode}">{@}</a>{.alternates with},
+            {.end}
+            <br />
+          {.end}
           {.if tags}
             <!--TAGS-->
             <em>tags</em> {.repeated section tags}
@@ -123,7 +121,7 @@
 
 </div>
 
-<div id="sidebar-right" class="col sqs-col-3 span-3 single-post">
+<div class="col sqs-col-4 span-4">
 	<squarespace:block-field id="sidebarBlock" columns="1" label="Sidebar Right" />
 </div>
 

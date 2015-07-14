@@ -1,0 +1,18 @@
+        <!--CONTENT INJECTION POINT-->
+
+        <section id="content" class="contact-profiles">
+
+        <div class="content-inner-wrapper">
+          {.section collection}{.equal? typeName "profiles"}
+              {.or}{.if description || title}<div class="collection-title-desc" data-collection-id="{id}" {.equal? collection.typeName "gallery"}{.or}{.equal? collection.typeName "album"}{.or}data-edit-main-image="Banner"{.end}{.end}>
+            <!-- <div class="collection-title-basic"><h1 class="page-title">{title}</h1></div> -->
+            {.if description}<div class="collection-desc">{description}</div>{.end}{.end}
+          </div>{.end}{.end}
+            <div class="main-content-wrapper" data-content-field="main-content" data-collection-id="{collection.id}" {.equal? collection.typeName "gallery"}{.or}{.equal? collection.typeName "album"}{.or}data-edit-main-image="Banner"{.end}{.end}>
+              {squarespace.main-content}
+            </div>
+        </div>
+        </section>
+        
+        
+      </div> <!-- end .wrapper -->

@@ -1,0 +1,14 @@
+{.section item}
+
+<div id="documentWrapper">
+
+  <div id="documentSummary" class="clear">
+
+      <h1 class="product-title" data-content-field="title">{title}</h1>
+
+      {body}
+
+  </div>
+</div>
+
+{.end}
